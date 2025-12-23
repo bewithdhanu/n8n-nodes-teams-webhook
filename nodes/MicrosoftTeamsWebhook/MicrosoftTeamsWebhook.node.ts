@@ -399,6 +399,3 @@ export class MicrosoftTeamsWebhook implements INodeType {
 	}
 }
 
-// Export as default for n8n compatibility
-export default MicrosoftTeamsWebhook;
-

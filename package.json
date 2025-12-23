@@ -21,7 +21,7 @@
 	},
 	"main": "index.js",
 	"scripts": {
-		"build": "tsc && gulp build:icons && node -e \"const fs=require('fs');const f='dist/nodes/MicrosoftTeamsWebhook/MicrosoftTeamsWebhook.node.js';let c=fs.readFileSync(f,'utf8');if(!c.includes('module.exports')){c+='\\nmodule.exports = MicrosoftTeamsWebhook;';fs.writeFileSync(f,c);}\"",
+		"build": "tsc && gulp build:icons",
 		"dev": "tsc --watch",
 		"format": "prettier --write .",
 		"lint": "eslint nodes --ext .ts",
