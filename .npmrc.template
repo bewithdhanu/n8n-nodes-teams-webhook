@@ -1,0 +1,7 @@
+# To use a granular access token with bypass 2FA:
+# 1. Create token at https://www.npmjs.com/settings/bewithdhanu/tokens
+# 2. Enable "Bypass 2FA" when creating the token
+# 3. Replace YOUR_TOKEN_HERE with your actual token below
+# 4. Rename this file to .npmrc (or add to existing .npmrc)
+
+//registry.npmjs.org/:_authToken=YOUR_TOKEN_HERE
