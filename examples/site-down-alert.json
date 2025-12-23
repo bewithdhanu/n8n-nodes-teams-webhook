@@ -1,0 +1,93 @@
+{
+	"type": "AdaptiveCard",
+	"version": "1.4",
+	"body": [
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "Image",
+					"url": "https://example.com/logo.png",
+					"size": "Small",
+					"style": "Person"
+				},
+				{
+					"type": "TextBlock",
+					"text": "🚨 Site Down Alert",
+					"size": "Large",
+					"weight": "Bolder",
+					"color": "Attention"
+				},
+				{
+					"type": "TextBlock",
+					"text": "My Service is currently down",
+					"size": "Medium",
+					"weight": "Bolder",
+					"spacing": "Small"
+				}
+			]
+		},
+		{
+			"type": "FactSet",
+			"facts": [
+				{
+					"title": "Service",
+					"value": "My Service"
+				},
+				{
+					"title": "Environment",
+					"value": "Prod"
+				},
+				{
+					"title": "Detected",
+					"value": "12/15/2024, 3:45:00 PM"
+				},
+				{
+					"title": "Error Code",
+					"value": "503"
+				},
+				{
+					"title": "Host",
+					"value": "api.example.com"
+				},
+				{
+					"title": "Region",
+					"value": "US-East"
+				}
+			],
+			"spacing": "Medium"
+		},
+		{
+			"type": "ActionSet",
+			"actions": [
+				{
+					"type": "Action.OpenUrl",
+					"title": "View Site",
+					"url": "https://example.com"
+				},
+				{
+					"type": "Action.ShowCard",
+					"title": "Technical Details",
+					"card": {
+						"type": "AdaptiveCard",
+						"version": "1.4",
+						"body": [
+							{
+								"type": "TextBlock",
+								"text": "**Error Message:** Service unavailable - Database connection failed",
+								"wrap": true
+							},
+							{
+								"type": "TextBlock",
+								"text": "**Error Code:** 503",
+								"wrap": true,
+								"spacing": "Small"
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}
+

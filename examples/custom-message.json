@@ -1,0 +1,39 @@
+{
+	"type": "AdaptiveCard",
+	"version": "1.4",
+	"body": [
+		{
+			"type": "TextBlock",
+			"text": "Custom Notification",
+			"size": "Large",
+			"weight": "Bolder"
+		},
+		{
+			"type": "TextBlock",
+			"text": "This is a custom Adaptive Card message sent via n8n.",
+			"wrap": true,
+			"spacing": "Medium"
+		},
+		{
+			"type": "FactSet",
+			"facts": [
+				{
+					"title": "Status",
+					"value": "Success"
+				},
+				{
+					"title": "Timestamp",
+					"value": "2024-12-15T16:00:00Z"
+				}
+			]
+		}
+	],
+	"actions": [
+		{
+			"type": "Action.OpenUrl",
+			"title": "Learn More",
+			"url": "https://example.com"
+		}
+	]
+}
+

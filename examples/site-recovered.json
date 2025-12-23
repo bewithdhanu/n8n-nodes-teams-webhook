@@ -1,0 +1,68 @@
+{
+	"type": "AdaptiveCard",
+	"version": "1.4",
+	"body": [
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "Image",
+					"url": "https://example.com/logo.png",
+					"size": "Small",
+					"style": "Person"
+				},
+				{
+					"type": "TextBlock",
+					"text": "✅ Site Recovered",
+					"size": "Large",
+					"weight": "Bolder",
+					"color": "Good"
+				},
+				{
+					"type": "TextBlock",
+					"text": "My Service is back online",
+					"size": "Medium",
+					"weight": "Bolder",
+					"spacing": "Small"
+				}
+			]
+		},
+		{
+			"type": "FactSet",
+			"facts": [
+				{
+					"title": "Service",
+					"value": "My Service"
+				},
+				{
+					"title": "Environment",
+					"value": "Prod"
+				},
+				{
+					"title": "Downtime",
+					"value": "15 minutes"
+				},
+				{
+					"title": "Recovered",
+					"value": "12/15/2024, 4:00:00 PM"
+				},
+				{
+					"title": "Response Time",
+					"value": "120ms"
+				}
+			],
+			"spacing": "Medium"
+		},
+		{
+			"type": "ActionSet",
+			"actions": [
+				{
+					"type": "Action.OpenUrl",
+					"title": "View Site",
+					"url": "https://example.com"
+				}
+			]
+		}
+	]
+}
+

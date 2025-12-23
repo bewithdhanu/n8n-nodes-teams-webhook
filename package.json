@@ -1,0 +1,54 @@
+{
+	"name": "n8n-nodes-teams-webhook",
+	"version": "1.0.0",
+	"description": "n8n node for sending Microsoft Teams messages via Incoming Webhooks with Adaptive Cards",
+	"keywords": [
+		"n8n-community-node",
+		"microsoft-teams",
+		"webhook",
+		"adaptive-cards"
+	],
+	"license": "MIT",
+	"homepage": "https://github.com/bewithdhanu/n8n-nodes-teams-webhook",
+	"author": {
+		"name": "Dhanu K",
+		"email": "bewithdhanu@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bewithdhanu/n8n-nodes-teams-webhook.git"
+	},
+	"main": "index.js",
+	"scripts": {
+		"build": "tsc && gulp build:icons",
+		"dev": "tsc --watch",
+		"format": "prettier --write .",
+		"lint": "eslint nodes credentials --ext .ts",
+		"lintfix": "eslint nodes credentials --ext .ts --fix",
+		"prepublishOnly": "npm run build && npm run lint -s"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"nodes": [
+			"dist/nodes/MicrosoftTeamsWebhook/MicrosoftTeamsWebhook.node.js"
+		],
+		"credentials": [],
+		"icon": "file:dist/nodes/MicrosoftTeamsWebhook/teams.svg"
+	},
+	"devDependencies": {
+		"@typescript-eslint/parser": "^5.45.0",
+		"eslint-plugin-n8n-nodes-base": "^1.11.0",
+		"gulp": "^4.0.2",
+		"n8n-workflow": "*",
+		"prettier": "^2.7.1",
+		"typescript": "~4.8.4"
+	},
+	"dependencies": {},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}
+
