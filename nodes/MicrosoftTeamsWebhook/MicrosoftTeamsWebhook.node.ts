@@ -1,10 +1,10 @@
-import {
+import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-	NodeOperationError,
 } from 'n8n-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
 
 /**
  * Microsoft Teams Webhook Node
@@ -24,8 +24,8 @@ export class MicrosoftTeamsWebhook implements INodeType {
 		defaults: {
 			name: 'Microsoft Teams Webhook',
 		},
-		inputs: ['main'],
-		outputs: ['main'],
+		inputs: [NodeConnectionTypes.Main],
+		outputs: [NodeConnectionTypes.Main],
 		properties: [
 			{
 				displayName: 'Webhook URL',
