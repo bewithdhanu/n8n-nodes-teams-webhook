@@ -1,0 +1,15 @@
+{
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": 2020,
+		"sourceType": "module",
+		"project": "./tsconfig.json"
+	},
+	"plugins": ["n8n-nodes-base"],
+	"extends": ["plugin:n8n-nodes-base/nodes"],
+	"rules": {
+		"n8n-nodes-base/node-filename-against-convention": "off"
+	}
+}
+

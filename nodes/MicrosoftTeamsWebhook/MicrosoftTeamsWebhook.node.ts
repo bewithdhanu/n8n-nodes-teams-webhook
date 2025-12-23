@@ -2,6 +2,7 @@ import {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeType,
+	NodeOperationError,
 } from 'n8n-workflow';
 import { microsoftTeamsWebhookDescription } from './MicrosoftTeamsWebhook.description';
 
@@ -242,18 +243,18 @@ export class MicrosoftTeamsWebhook implements INodeType {
 	 * Validates and parses custom Adaptive Card JSON
 	 * Handles both string JSON and already-parsed objects
 	 */
-	private parseCustomCard(jsonInput: string | object): any {
+	private parseCustomCard(executeFunctions: IExecuteFunctions, jsonInput: string | object): any {
 		try {
 			const card = typeof jsonInput === 'string' ? JSON.parse(jsonInput) : jsonInput;
 			
 			// Basic validation - ensure it's an object
 			if (typeof card !== 'object' || card === null) {
-				throw new Error('Adaptive Card JSON must be an object');
+				throw new NodeOperationError(executeFunctions.getNode(), 'Adaptive Card JSON must be an object');
 			}
 
 			// Ensure it has the required type field
 			if (!card.type || card.type !== 'AdaptiveCard') {
-				throw new Error('Adaptive Card must have type "AdaptiveCard"');
+				throw new NodeOperationError(executeFunctions.getNode(), 'Adaptive Card must have type "AdaptiveCard"');
 			}
 
 			// Ensure version is set
@@ -263,7 +264,10 @@ export class MicrosoftTeamsWebhook implements INodeType {
 
 			return card;
 		} catch (error: any) {
-			throw new Error(`Invalid Adaptive Card JSON: ${error.message}`);
+			if (error instanceof NodeOperationError) {
+				throw error;
+			}
+			throw new NodeOperationError(executeFunctions.getNode(), `Invalid Adaptive Card JSON: ${error.message}`);
 		}
 	}
 
@@ -292,7 +296,7 @@ export class MicrosoftTeamsWebhook implements INodeType {
 				// Get webhook URL
 				const webhookUrl = this.getNodeParameter('webhookUrl', i) as string;
 				if (!webhookUrl) {
-					throw new Error('Webhook URL is required');
+					throw new NodeOperationError(this.getNode(), 'Webhook URL is required');
 				}
 
 				// Get template type
@@ -343,9 +347,9 @@ export class MicrosoftTeamsWebhook implements INodeType {
 					});
 				} else if (template === 'custom') {
 					const customCardJson = this.getNodeParameter('customCardJson', i) as string | object;
-					adaptiveCard = nodeInstance.parseCustomCard(customCardJson);
+					adaptiveCard = nodeInstance.parseCustomCard(this, customCardJson);
 				} else {
-					throw new Error(`Unknown template: ${template}`);
+					throw new NodeOperationError(this.getNode(), `Unknown template: ${template}`);
 				}
 
 				// Wrap card in Teams message format
