@@ -12,6 +12,9 @@
 		"resolveJsonModule": true,
 		"moduleResolution": "node"
 	},
+	"ts-node": {
+		"skipLibCheck": true
+	},
 	"include": [
 		"nodes/**/*",
 		"credentials/**/*"

@@ -10,7 +10,7 @@ export const microsoftTeamsWebhookDescription: INodeTypeDescription = {
 	displayName: 'Microsoft Teams Webhook',
 	name: 'microsoftTeamsWebhook',
 	icon: 'file:teams.svg',
-	group: ['communication'],
+	group: ['trigger'],
 	version: 1,
 	subtitle: '={{$parameter["template"]}}',
 	description: 'Send Adaptive Cards to Microsoft Teams via Incoming Webhook',

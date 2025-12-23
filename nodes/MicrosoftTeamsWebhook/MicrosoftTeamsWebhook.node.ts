@@ -285,6 +285,7 @@ export class MicrosoftTeamsWebhook implements INodeType {
 	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
 		const items = this.getInputData();
 		const returnData: INodeExecutionData[] = [];
+		const nodeInstance = this as unknown as MicrosoftTeamsWebhook;
 
 		for (let i = 0; i < items.length; i++) {
 			try {
@@ -311,7 +312,7 @@ export class MicrosoftTeamsWebhook implements INodeType {
 					const detectedTime = this.getNodeParameter('detectedTime', i, '') as string;
 					const logoUrl = this.getNodeParameter('logoUrl', i, '') as string;
 
-					adaptiveCard = this.buildDownCard({
+					adaptiveCard = nodeInstance.buildDownCard({
 						serviceName,
 						siteUrl,
 						environment,
@@ -331,7 +332,7 @@ export class MicrosoftTeamsWebhook implements INodeType {
 					const averageResponseTime = this.getNodeParameter('averageResponseTime', i, '') as string;
 					const logoUrl = this.getNodeParameter('logoUrl', i, '') as string;
 
-					adaptiveCard = this.buildUpCard({
+					adaptiveCard = nodeInstance.buildUpCard({
 						serviceName,
 						siteUrl,
 						environment,
@@ -342,13 +343,13 @@ export class MicrosoftTeamsWebhook implements INodeType {
 					});
 				} else if (template === 'custom') {
 					const customCardJson = this.getNodeParameter('customCardJson', i) as string | object;
-					adaptiveCard = this.parseCustomCard(customCardJson);
+					adaptiveCard = nodeInstance.parseCustomCard(customCardJson);
 				} else {
 					throw new Error(`Unknown template: ${template}`);
 				}
 
 				// Wrap card in Teams message format
-				const messagePayload = this.wrapCardForTeams(adaptiveCard);
+				const messagePayload = nodeInstance.wrapCardForTeams(adaptiveCard);
 
 				// Send HTTP POST request
 				const response = await this.helpers.httpRequest({
