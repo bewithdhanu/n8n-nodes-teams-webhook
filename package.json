@@ -1,8 +1,9 @@
 {
 	"name": "n8n-nodes-teams-webhook",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "n8n node for sending Microsoft Teams messages via Incoming Webhooks with Adaptive Cards",
 	"keywords": [
+		"n8n-community-node-package",
 		"n8n-community-node",
 		"microsoft-teams",
 		"webhook",
@@ -20,7 +21,7 @@
 	},
 	"main": "index.js",
 	"scripts": {
-		"build": "tsc && gulp build:icons",
+		"build": "tsc && gulp build:icons && node -e \"const fs=require('fs');const f='dist/nodes/MicrosoftTeamsWebhook/MicrosoftTeamsWebhook.node.js';let c=fs.readFileSync(f,'utf8');if(!c.includes('module.exports')){c+='\\nmodule.exports = MicrosoftTeamsWebhook;';fs.writeFileSync(f,c);}\"",
 		"dev": "tsc --watch",
 		"format": "prettier --write .",
 		"lint": "eslint nodes --ext .ts",
@@ -39,6 +40,7 @@
 		"icon": "file:dist/nodes/MicrosoftTeamsWebhook/teams.svg"
 	},
 	"devDependencies": {
+		"@types/node": "^25.0.3",
 		"@typescript-eslint/parser": "^5.45.0",
 		"eslint-plugin-n8n-nodes-base": "^1.11.0",
 		"gulp": "^4.0.2",

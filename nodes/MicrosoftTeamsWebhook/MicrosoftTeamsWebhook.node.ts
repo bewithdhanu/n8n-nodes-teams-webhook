@@ -402,3 +402,6 @@ export class MicrosoftTeamsWebhook implements INodeType {
 // Export as default for n8n compatibility
 export default MicrosoftTeamsWebhook;
 
+// Also export as CommonJS module.exports for n8n compatibility
+module.exports = MicrosoftTeamsWebhook;
+
